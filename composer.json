@@ -13,5 +13,8 @@
             "name": "Loïc Bourg",
             "email": "lbourg@itnetwork.fr"
         }
-    ]
+    ],
+    "autoload": {
+        "psr-4": { "ITN\\DebugBundle\\": "" }
+    }
 }
