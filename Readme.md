@@ -20,7 +20,8 @@ Configuration
 ``` yaml
 itn_debug:
     urls:
-        debug/url: une url de debug
+        #you/url: Your link label
+        debug/url: My debug feature
 ```
 
 Tests
