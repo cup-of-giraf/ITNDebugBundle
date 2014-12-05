@@ -1,0 +1,6 @@
+services:
+    data_collector.itn_debug_bundle.debug_url_collector:
+        arguments: [%itn_debug_bundle.urls%]
+        class: ITN\DebugBundle\DataCollector\DebugUrlCollector
+        tags:
+            - { name: data_collector, template: "ITNDebugBundle:Collector:layout.html.twig", id: itn_debug_bundle.debug_url_collector }

@@ -19,7 +19,7 @@ class ITNDebugExtension extends Extension
      */
     public function load(array $configs, ContainerBuilder $container)
     {
-        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Ressources/config'));
+        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/Ressources/config'));
         $configuration = new Configuration();
 
         $configs = $this->processConfiguration($configuration, $configs);
@@ -33,5 +33,7 @@ class ITNDebugExtension extends Extension
             'itn_debug_bundle.authorized_hosts',
             $configs['authorized_hosts']
         );
+
+        $loader->load('services.yml');
     }
 }
