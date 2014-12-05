@@ -24,6 +24,17 @@ itn_debug:
         debug/url: My debug feature
 ```
 
+Vous pouvez également ajouter dans votre security.yml
+
+``` yaml
+security:
+    firewalls:
+        debug:
+            pattern: %itn_debug_bundle.firewall_patern%
+```
+
+pour autoriser les urls de debug même si vous n'êtes pas identifiés
+
 Tests
 ------
 

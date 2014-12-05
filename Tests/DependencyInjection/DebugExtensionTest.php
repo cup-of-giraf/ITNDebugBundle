@@ -23,10 +23,16 @@ class DebugExtensionTest extends AbstractExtensionTestCase
         );
 
         $this->assertContainerBuilderHasParameter('itn_debug_bundle.urls');
+        $this->assertContainerBuilderHasParameter('itn_debug_bundle.firewall_patern');
 
         $this->assertSame(
             $this->container->getParameter('itn_debug_bundle.urls'),
             array()
+        );
+
+        $this->assertSame(
+            $this->container->getParameter('itn_debug_bundle.firewall_patern'),
+            ''
         );
     }
 
@@ -39,10 +45,16 @@ class DebugExtensionTest extends AbstractExtensionTestCase
         );
 
         $this->assertContainerBuilderHasParameter('itn_debug_bundle.urls');
+        $this->assertContainerBuilderHasParameter('itn_debug_bundle.firewall_patern');
 
         $this->assertSame(
             $this->container->getParameter('itn_debug_bundle.urls'),
             array('url1', 'url2')
+        );
+
+        $this->assertSame(
+            $this->container->getParameter('itn_debug_bundle.firewall_patern'),
+            '(url1)|(url2)'
         );
     }
 }

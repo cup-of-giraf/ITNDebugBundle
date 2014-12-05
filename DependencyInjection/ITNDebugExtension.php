@@ -29,6 +29,24 @@ class ITNDebugExtension extends Extension
             $configs['urls']
         );
 
+        $container->setParameter(
+            'itn_debug_bundle.firewall_patern',
+            $this->getFirewallPatern($configs['urls'])
+        );
+
+
         $loader->load('services.yml');
+    }
+
+    protected function getFirewallPatern(array $urls)
+    {
+        $urls = array_map(
+            function ($item) {
+                return '(' . $item . ')';
+            },
+            $urls
+        );
+
+        return implode('|', $urls);
     }
 }
