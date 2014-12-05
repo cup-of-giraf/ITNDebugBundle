@@ -15,21 +15,14 @@ class DebugExtensionTest extends AbstractExtensionTestCase
         );
     }
 
-    public function testLoadWithNoAuthorizedHostsShouldSetDefaultAuthorizedHost()
+    public function testLoadWithNoParamsShouldSetUrlsWithEmptyArray()
     {
         $this->load(
             array(
-                'authorized_hosts' => array(),
             )
         );
 
-        $this->assertContainerBuilderHasParameter('itn_debug_bundle.authorized_hosts');
         $this->assertContainerBuilderHasParameter('itn_debug_bundle.urls');
-
-        $this->assertSame(
-            $this->container->getParameter('itn_debug_bundle.authorized_hosts'),
-            array('127.0.0.1')
-        );
 
         $this->assertSame(
             $this->container->getParameter('itn_debug_bundle.urls'),
@@ -37,22 +30,15 @@ class DebugExtensionTest extends AbstractExtensionTestCase
         );
     }
 
-    public function testLoadWithAuthorizedHostsAndUrlShouldSetBundleParameters()
+    public function testLoadWithUrlsShouldSetUrlParameter()
     {
         $this->load(
             array(
-                'authorized_hosts' => array('coucou'),
                 'urls' => array('url1', 'url2'),
             )
         );
 
-        $this->assertContainerBuilderHasParameter('itn_debug_bundle.authorized_hosts');
         $this->assertContainerBuilderHasParameter('itn_debug_bundle.urls');
-
-        $this->assertSame(
-            $this->container->getParameter('itn_debug_bundle.authorized_hosts'),
-            array('coucou')
-        );
 
         $this->assertSame(
             $this->container->getParameter('itn_debug_bundle.urls'),

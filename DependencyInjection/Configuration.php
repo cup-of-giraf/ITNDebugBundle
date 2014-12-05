@@ -24,13 +24,6 @@ class Configuration implements ConfigurationInterface
             ->children();
 
         $child
-            ->arrayNode('authorized_hosts')
-                ->beforeNormalization()
-                    ->ifTrue(function($v) { return count($v) === 0; })
-                    ->then(function($v) { return array('127.0.0.1'); })
-                ->end()
-                ->prototype('scalar')->end()
-            ->end()
             ->arrayNode('urls')
                 ->prototype('scalar')->end()
             ->end();

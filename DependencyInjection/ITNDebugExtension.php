@@ -29,11 +29,6 @@ class ITNDebugExtension extends Extension
             $configs['urls']
         );
 
-        $container->setParameter(
-            'itn_debug_bundle.authorized_hosts',
-            $configs['authorized_hosts']
-        );
-
         $loader->load('services.yml');
     }
 }
