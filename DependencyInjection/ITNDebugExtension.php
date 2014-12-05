@@ -19,7 +19,7 @@ class ITNDebugExtension extends Extension
      */
     public function load(array $configs, ContainerBuilder $container)
     {
-        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/Ressources/config'));
+        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $configuration = new Configuration();
 
         $configs = $this->processConfiguration($configuration, $configs);

@@ -1,0 +1,22 @@
+{% extends 'WebProfilerBundle:Profiler:layout.html.twig' %}
+
+{% block toolbar %}
+    {% set icon %}
+    <a href="#">
+        <img width="26" height="28" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAhCAQAAAASL2HaAAACSklEQVR4AaXUT0ikZRzA8c87Oo5iRYfGoH8UFv0RbHqhnaJNag6B4UaHiAqUOihEh9hDZhi0p4goSMhLJRVeLIpNcBc6ZAW5q+TODIV4yJLaJZAIYsmJtPHp0kFefMDZvs/tPXz4vc/7Pg/hktajAO1o+F4rXeN6AAjqWmsiOwEAJO6RukvJtpq6FevEywI3eU8FwAB4xwsuHgZIPOc13dhUVdMtlSoaM2jU56IFdfCKILhgCAA5x20LgqHYHuQAJZP4WJ+rjAESzzuvXxUzisQnyKsL1nWCijEwLgW9/hTME59gxJ32PGNPOxYNOGfZDaoo2PQSHnEzZMuBMk5ZVvYiEkelyo6A1/V62xYejH+FFKtY9qppRScBPZr6/YBzHlbx7sFA3m2oYte0WYPaAM9a8Ab/AbfGJkjksAPmzGsA+Nvj9kATW7E92LGGFDzttC0AFy16DKT4NQZQQwqeUHECwHEPGQUpfo4Dqzjmdh3+Ecw4AxZ8akc7hl1n1/tx4AMbOn2ox1fYdZ+Kex0TsOJGU5h1nvhZOKopmFaQrehLQdCX+RMzAG8JgjVlAPCk3wRBcFqnLm3xC2Vcw7g7LPlWVU2X1N36AAxadK0lw7HjDEesC/avpjkPqO178pGXD34FIG/ACV/7yVmfedMt4Eob+4g/YkC8qzVi13rOYfrLdwCAEflWJuAKZzMznJSPAhHiTIaY19EKwOWWMsSCQhSIEN9kiFOJ4HefOGyXeUoCgAuJ4P80mShptcSU+8GPSi6pbl/4xYQC/wKjsgm0xEI72QAAAABJRU5ErkJggg=="/>
+            <span>
+                Debug Urls
+            </span>
+    </a>
+    {% endset %}
+
+    {% set text %}
+        {% for url, label in collector.data.urls %}
+            <div class="sf-toolbar-info-piece">
+                <a target="_blank" href="{{ url }}" rel="{{ label }}">{{ label }}</a>
+            </div>
+        {% endfor %}
+    {% endset %}
+
+    {% include '@WebProfiler/Profiler/toolbar_item.html.twig' with { 'link': false } %}
+{% endblock %}
