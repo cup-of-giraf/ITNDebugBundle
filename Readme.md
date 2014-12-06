@@ -24,16 +24,13 @@ itn_debug:
         debug/url: My debug feature
 ```
 
-Vous pouvez également ajouter dans votre security.yml
-
+Si vous voulez que les urls de debug appartenant à l'application ne soient pas protégées par le firewall du security bundle:
 ``` yaml
-security:
-    firewalls:
-        debug:
-            pattern: %itn_debug_bundle.firewall_patern%
+itn_debug:
+    secure_url: false
 ```
 
-pour autoriser les urls de debug même si vous n'êtes pas identifiés
+**ATTENTION: si vous mettez cette option à false, assurez vous que le bundle n'est chargé qu'en environement de dev.**
 
 Tests
 ------

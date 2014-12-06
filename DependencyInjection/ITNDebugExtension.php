@@ -30,23 +30,30 @@ class ITNDebugExtension extends Extension
         );
 
         $container->setParameter(
-            'itn_debug_bundle.firewall_patern',
+            'itn_debug_bundle.application_urls',
             $this->getFirewallPatern($configs['urls'])
         );
 
+        $container->setParameter(
+            'itn_debug_bundle.secure_url',
+            $configs['secure_url']
+        );
 
         $loader->load('services.yml');
     }
 
     protected function getFirewallPatern(array $urls)
     {
-        $urls = array_map(
-            function ($item) {
-                return '(' . $item . ')';
-            },
-            $urls
+        // remove url from other domain
+        $applicationAbsoluteUrls = array_filter(
+            array_flip($urls),
+            function ($url) {
+                $urlInfo = parse_url($url);
+
+                return !array_key_exists('scheme', $urlInfo) && substr($url, 0, 1) == '/';
+            }
         );
 
-        return implode('|', $urls);
+        return $applicationAbsoluteUrls;
     }
 }

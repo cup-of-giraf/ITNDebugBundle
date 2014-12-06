@@ -24,6 +24,8 @@ class Configuration implements ConfigurationInterface
             ->children();
 
         $child
+            ->booleanNode('secure_url')
+            ->end()
             ->arrayNode('urls')
                 ->prototype('scalar')->end()
             ->end();

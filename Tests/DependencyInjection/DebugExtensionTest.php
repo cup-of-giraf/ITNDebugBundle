@@ -40,7 +40,10 @@ class DebugExtensionTest extends AbstractExtensionTestCase
     {
         $this->load(
             array(
-                'urls' => array('url1', 'url2'),
+                'urls' => array(
+                    'my/url' => 'my url desc',
+                    'my/other/url' => 'my other url desc'
+                ),
             )
         );
 
@@ -49,12 +52,15 @@ class DebugExtensionTest extends AbstractExtensionTestCase
 
         $this->assertSame(
             $this->container->getParameter('itn_debug_bundle.urls'),
-            array('url1', 'url2')
+            array(
+                'my/url' => 'my url desc',
+                'my/other/url' => 'my other url desc'
+            )
         );
 
         $this->assertSame(
             $this->container->getParameter('itn_debug_bundle.firewall_patern'),
-            '(url1)|(url2)'
+            '(my/url)|(my/other/url)'
         );
     }
 }
