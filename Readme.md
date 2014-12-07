@@ -1,8 +1,9 @@
 ITNDebugBundle
 =============
 
+Ce bundle permet de définir une liste d'url de debug à afficher dans la debug toolbar de symfony.
 
-Ce bundle permet de définir une liste d'url de debug à afficher dans la debug toolbar de symfony
+Le but de ce bundle est de simplifier l’accès aux URL que vous utilisez fréquemment pour chaque projet en les mettant dans la debug toolbar de symfony.
 
 Installation
 --------------
@@ -21,7 +22,8 @@ Configuration
 itn_debug:
     urls:
         #your/url: Your link label
-        debug/url: My debug feature
+        http://ci.gitlab.com/my-project: continuous integration server
+        /queues: information about queues status
 ```
 
 Si vous voulez que les urls de debug appartenant à l'application ne soient pas protégées par le firewall du security bundle:
