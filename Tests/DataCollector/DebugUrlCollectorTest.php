@@ -22,4 +22,9 @@ class DebugUrlCollectorTest extends PHPUnit_Framework_TestCase
         $this->assertSame($colector->data['urls'], $givenUrls);
 
     }
+
+    public function tearDown()
+    {
+        m::close();
+    }
 }

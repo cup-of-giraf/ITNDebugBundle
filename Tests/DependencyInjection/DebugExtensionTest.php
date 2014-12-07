@@ -19,20 +19,16 @@ class DebugExtensionTest extends AbstractExtensionTestCase
     {
         $this->load(
             array(
+                'secure_url' => true
             )
         );
 
         $this->assertContainerBuilderHasParameter('itn_debug_bundle.urls');
-        $this->assertContainerBuilderHasParameter('itn_debug_bundle.firewall_patern');
+        $this->assertContainerBuilderHasParameter('itn_debug_bundle.secure_url');
 
         $this->assertSame(
             $this->container->getParameter('itn_debug_bundle.urls'),
             array()
-        );
-
-        $this->assertSame(
-            $this->container->getParameter('itn_debug_bundle.firewall_patern'),
-            ''
         );
     }
 
@@ -44,11 +40,12 @@ class DebugExtensionTest extends AbstractExtensionTestCase
                     'my/url' => 'my url desc',
                     'my/other/url' => 'my other url desc'
                 ),
+                'secure_url' => true
             )
         );
 
         $this->assertContainerBuilderHasParameter('itn_debug_bundle.urls');
-        $this->assertContainerBuilderHasParameter('itn_debug_bundle.firewall_patern');
+        $this->assertContainerBuilderHasParameter('itn_debug_bundle.secure_url');
 
         $this->assertSame(
             $this->container->getParameter('itn_debug_bundle.urls'),
@@ -57,10 +54,19 @@ class DebugExtensionTest extends AbstractExtensionTestCase
                 'my/other/url' => 'my other url desc'
             )
         );
+    }
 
-        $this->assertSame(
-            $this->container->getParameter('itn_debug_bundle.firewall_patern'),
-            '(my/url)|(my/other/url)'
+    public function testLoadWithSecureUrlShouldSetSecureUrlParameter()
+    {
+        $this->load(
+            array(
+                'secure_url' => false
+            )
+        );
+
+        $this->assertContainerBuilderHasParameter('itn_debug_bundle.secure_url');
+        $this->assertFalse(
+            $this->container->getParameter('itn_debug_bundle.secure_url')
         );
     }
 }
